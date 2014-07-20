@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717173503) do
+ActiveRecord::Schema.define(version: 20140720203243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,5 +31,15 @@ ActiveRecord::Schema.define(version: 20140717173503) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "exchange_rates", force: true do |t|
+    t.string   "currency_code"
+    t.date     "date"
+    t.decimal  "conversion_rate", precision: 10, scale: 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "exchange_rates", ["currency_code", "date"], name: "index_exchange_rates_on_currency_code_and_date", using: :btree
 
 end

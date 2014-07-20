@@ -1,0 +1,5 @@
+CURRENCY_CODES = %w[
+	CHF
+	EUR
+	USD
+]
