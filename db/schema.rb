@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720203243) do
+ActiveRecord::Schema.define(version: 20140720205625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,5 +41,16 @@ ActiveRecord::Schema.define(version: 20140720203243) do
   end
 
   add_index "exchange_rates", ["currency_code", "date"], name: "index_exchange_rates_on_currency_code_and_date", using: :btree
+
+  create_table "expenses", force: true do |t|
+    t.string   "reference"
+    t.date     "transaction_date"
+    t.integer  "lc_amount"
+    t.integer  "chf_amount"
+    t.date     "payment_date"
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
