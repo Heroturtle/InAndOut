@@ -25,7 +25,7 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:reference, :transaction_date, :lc_amount, :payment_date, :comments)
+    params.require(:expense).permit(:invoice_number, :amount, :currency_code, :transaction_date, :payment_date, :description)
   end
 
 end

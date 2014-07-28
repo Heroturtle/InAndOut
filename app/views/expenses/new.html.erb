@@ -4,7 +4,11 @@
 
 <%= form_for(@expense) do |f| %>
 
-  <%= f.label :invoice_number, 'Rechnungsnummer' %>
+  <% if @expense.errors.any? %>
+    <%= error_messages_for @expense %>
+  <% end %>
+
+  <%= f.label :invoice_number %>
   <%= f.text_field :invoice_number, placeholder: 'Rechnung #123' %>
 
   <%= f.label :transaction_date, 'Transaktionsdatum' %>
@@ -22,6 +26,6 @@
   <%= f.label :description, 'Beschreibung' %>
   <%= f.text_area :description, rows: 3 %>
 
-  <%= f.submit 'Ausgabe anlegen' %>
+  <%= f.submit %>
 
 <% end %>
