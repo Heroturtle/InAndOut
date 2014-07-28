@@ -1,0 +1,9 @@
+<h1>This is the index view for Expenses</h1>
+
+	<% @expenses.each do |expense| %>
+		<%= expense.reference %>
+		<%= expense.transaction_date %>
+		<%= expense.lc_amount %>
+		<%= expense.payment_date %>
+		<%= expense.comment %>
+	<% end %>

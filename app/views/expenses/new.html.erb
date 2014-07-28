@@ -1,127 +1,28 @@
-  <h2> NEW PURCHASE</h2>
-     </div>
-    <form action="#" method="get" name="journal">
-    <div class="divider">
-    <div class="row gap">
-    <label><span class="left">Contact:</span><span class="right gap">
-                  <div class="select_box">
-<select size="1" class="select" style="z-index: 10; opacity: 0;" title="">
-                  <option selected></option>
-                  <option>Category 1</option>
-                  <option>Category 2</option>
-                  <option>Category 3</option>
-                  <option>Category 4</option>
-                </select>
-                
-</div>   
-    
-    </span></label>
-    </div>
-    <div class="row gap">
-    <label><span class="left">Reference:</span><span class="right"><input type="text" name="reference" class="new_change"></span></label>
-    </div>
-    <div class="row gap">
-    <label><span class="left">Category:</span><span class="right">
-                  <div class="select_box">
-<select size="1" class="select" style="z-index: 10; opacity: 0;" title="">
-                  <option selected></option>
-                  <option>Category 1</option>
-                  <option>Category 2</option>
-                  <option>Category 3</option>
-                  <option>Category 4</option>
-                </select>
-</div> 
-    
-    </span></label>
-    </div>
-    <div class="spacer"></div>
-    </div>
-    <div class="divider">
-    <div class="row gap">
-       <label><span class="left">Purchase date:</span><span class="middle_span"><input name="purchase_date" class="change" type="text" value="25.06.2012" onFocus="blank(this)" onBlur="unblank(this)" /></span></label>
-       <span class="right_span">
-       <img src="images/calender.png" alt="calender" /></span>
-    </div>
-    
-    <div class="row gap">
-    <label><span class="left">Amount:</span><span class="right">
-                  <div class="select_box1">
-<select size="1" class="select1" style="z-index: 10; opacity: 0;" title="Select one">
-                  <option selected>CHF</option>
-                  <option>CHF1</option>
-                  <option>CHF2</option>
-                  <option>CHF3</option>
-                  <option>CHF4</option>
-                </select>
-</div> 
-		<input type="text" name="amount" class="small_change2">
-    <span class="text">Use negative numbers for a Bill Credit Note (refund)</span>
-    </span></label>
-    
-    </div>
-    
-    <div class="row gap">
-    <label><span class="left">VAT-key:</span><span class="right">
-                  <div class="select_box">
-<select size="1" class="select" style="z-index: 10; opacity: 0;" title="">
-                  <option selected></option>
-                  <option>Category 1</option>
-                  <option>Category 2</option>
-                  <option>Category 3</option>
-                  <option>Category 4</option>
-                </select>
-</div> 
-		<input type="text" name="vat-key" class="small_change">
-    
-    </span></label>
-    </div>
-    
-    <div class="row gap">
-      <span class="radio">Amount are:</span><span class="right"> 
-      <label> <input name="radio" type="radio" value="radio" checked  /> Inclusive of Tax </label> 
-      <label><input name="radio" type="radio" value="radio" /> Exclusive of Tax </label> </span>
+  <% provide(:title, 'Expense') %>
+  <h1>Expense</h1>
 
-    </div>
-    <div class="spacer"></div>
-    </div>
-    
-    <div class="row gap">
-    <label><span class="left">Paid Through:</span><span class="right gap">
-              <div class="select_box">
-<select size="1" class="select" style="z-index: 10; opacity: 0;" title="">
-                  <option selected></option>
-                  <option>Category 1</option>
-                  <option>Category 2</option>
-                  <option>Category 3</option>
-                  <option>Category 4</option>
-                </select>
-</div>
-    
-    
-    </span></label>
-    </div>
-    
-    <div class="row gap">
-       <label><span class="left">Purchase Payment Date:</span><span class="middle_span"><input name="purchase_payment_date" class="change" type="text" value="25.06.2012" onFocus="blank(this)" onBlur="unblank(this)"/></span></label>
-        <span class="right_span">
-       <img src="images/calender.png"  alt="calender" /></span>
-    </div>
-    
-    <div class="row gap">
-    <label><span class="left">Comments:</span><span class="right"><textarea name="comments" class="textchange" cols="" rows="2"></textarea></span></label>
-    </div>
-    
-    
-    
-    <div class="button_area resize">
-    <div class="book_area">
-    <div class="left_area"><input name="" class="btn_submit" value="Submit" type="submit" /></div>
-    <div class="left_area flt_left"><a href="#" class="blue_link">Cancel</a></div>
-</div>
-<br class="spacer" />
-    </div>
-    </form>
-  </div>
-  <br class="spacer" />	
-      </div>
-  </div>
+    <%= form_for(@expense) do |f| %>
+
+      <%= f.label :reference %>
+      <%= f.text_field :reference %>
+
+      <%= f.label :transaction_date %>
+      <%= f.date_field :transaction_date %>
+
+<% CURRENCY_CODES.each do |currency_codes| %>
+  <%= puts currency_codes %>
+<% end %>
+
+      <%= f.label :"Amount in local currency" %>
+      <%= f.text_field :lc_amount %>
+
+      <%= f.label :payment_date %>
+      <%= f.date_field :payment_date %>
+
+
+      <%= f.label :comments %>
+      <%= f.text_field :comments %>
+
+      <%= f.submit "Create expense" %>
+
+<% end %>

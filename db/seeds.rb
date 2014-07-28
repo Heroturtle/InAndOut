@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+# Create basic exchange rates
+ExchangeRate.create!(currency_code: ..., ...)
+ExchangeRate.create!(currency_code: ..., ...)
+ExchangeRate.create!(currency_code: ..., ...)
+
+# rake db:seed ausfuehren

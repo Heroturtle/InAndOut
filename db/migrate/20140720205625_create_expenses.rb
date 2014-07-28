@@ -5,10 +5,10 @@ class CreateExpenses < ActiveRecord::Migration
     	t.date		:transaction_date
     	t.integer	:lc_amount
     	t.integer	:chf_amount
-    	t.date    	:payment_date
+    	t.date    :payment_date
     	t.text		:comments
 
-      	t.timestamps
+      t.timestamps
     end
   end
 end
