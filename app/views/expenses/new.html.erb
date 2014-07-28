@@ -1,28 +1,27 @@
-  <% provide(:title, 'Expense') %>
-  <h1>Expense</h1>
+<% provide(:title, 'Neue Ausgabe anlegen') %>
 
-    <%= form_for(@expense) do |f| %>
+<h1>Neue Ausgabe anlegen</h1>
 
-      <%= f.label :reference %>
-      <%= f.text_field :reference %>
+<%= form_for(@expense) do |f| %>
 
-      <%= f.label :transaction_date %>
-      <%= f.date_field :transaction_date %>
+  <%= f.label :invoice_number, 'Rechnungsnummer' %>
+  <%= f.text_field :invoice_number, placeholder: 'Rechnung #123' %>
 
-<% CURRENCY_CODES.each do |currency_codes| %>
-  <%= puts currency_codes %>
-<% end %>
+  <%= f.label :transaction_date, 'Transaktionsdatum' %>
+  <%= f.date_field :transaction_date, placeholder: l(Date.current) %>
 
-      <%= f.label :"Amount in local currency" %>
-      <%= f.text_field :lc_amount %>
+  <%= f.label :amount, 'Rechnungsbetrag' %>
+  <%= f.text_field :amount, placeholder: '100.25' %>
 
-      <%= f.label :payment_date %>
-      <%= f.date_field :payment_date %>
+  <%= f.label :currency_code, 'Waehrung' %>
+  <%= f.collection_select :currency_code, CURRENCY_CODES, :to_s, :to_s, prompt: 'Waehrung auswaehlen' %>
 
+  <%= f.label :payment_date, 'Zahlungsdatum' %>
+  <%= f.date_field :payment_date, placeholder: l(Date.current) %>
 
-      <%= f.label :comments %>
-      <%= f.text_field :comments %>
+  <%= f.label :description, 'Beschreibung' %>
+  <%= f.text_area :description, rows: 3 %>
 
-      <%= f.submit "Create expense" %>
+  <%= f.submit 'Ausgabe anlegen' %>
 
 <% end %>

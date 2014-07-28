@@ -16,41 +16,29 @@ ActiveRecord::Schema.define(version: 20140720205625) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "delayed_jobs", force: true do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
-
   create_table "exchange_rates", force: true do |t|
     t.string   "currency_code"
     t.date     "date"
-    t.decimal  "conversion_rate", precision: 10, scale: 6
+    t.decimal  "conversion_rate", precision: 12, scale: 6
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "exchange_rates", ["currency_code", "date"], name: "index_exchange_rates_on_currency_code_and_date", using: :btree
+  add_index "exchange_rates", ["currency_code", "date"], name: "index_exchange_rates_on_currency_code_and_date", unique: true, using: :btree
+  add_index "exchange_rates", ["currency_code"], name: "index_exchange_rates_on_currency_code", using: :btree
+  add_index "exchange_rates", ["date"], name: "index_exchange_rates_on_date", using: :btree
 
   create_table "expenses", force: true do |t|
-    t.string   "reference"
+    t.string   "invoice_number"
+    t.decimal  "amount",           precision: 12, scale: 2
+    t.string   "currency_code"
     t.date     "transaction_date"
-    t.integer  "lc_amount"
-    t.integer  "chf_amount"
     t.date     "payment_date"
-    t.text     "comments"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "expenses", ["transaction_date"], name: "index_expenses_on_transaction_date", using: :btree
 
 end
