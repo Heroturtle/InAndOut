@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.1.2"
 
+gem 'bootstrap-sass', '~> 3.2.0'
 gem "coffee-rails"
 gem 'dynamic_form'
 gem "email_validator"
@@ -12,6 +13,7 @@ gem "rack-timeout"
 gem "rails", "4.1.4"
 gem "recipient_interceptor"
 gem "sass-rails", "~> 4.0.3"
+gem "slim-rails"
 gem "title"
 gem "uglifier"
 gem "unicorn"

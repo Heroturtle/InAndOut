@@ -1,0 +1,31 @@
+= form_for(@expense) do |f|
+
+  - if @expense.errors.any?
+    = error_messages_for @expense
+
+  .field  
+    = f.label :invoice_number
+    = f.text_field :invoice_number, placeholder: 'Rechnung #123'
+
+  .field
+    = f.label :transaction_date, 'Transaktionsdatum'
+    = f.date_field :transaction_date, placeholder: l(Date.current)
+  
+  .field
+    = f.label :amount, 'Rechnungsbetrag'
+    = f.text_field :amount, placeholder: '100.25'
+
+  .field 
+    = f.label :currency_code, 'Waehrung'
+    = f.collection_select :currency_code, CURRENCY_CODES, :to_s, :to_s, prompt: 'Waehrung auswaehlen'
+
+  .field
+    = f.label :payment_date, 'Zahlungsdatum'
+    = f.date_field :payment_date, placeholder: l(Date.current)
+
+  .field
+    = f.label :description, 'Beschreibung'
+    = f.text_area :description, rows: 3
+
+  .actions
+    = f.submit
