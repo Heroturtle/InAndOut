@@ -1,0 +1,27 @@
+<%= form_for(@expense) do |f| %>
+
+  <% if @expense.errors.any? %>
+    <%= error_messages_for @expense %>
+  <% end %>
+
+  <%= f.label :invoice_number %>
+  <%= f.text_field :invoice_number, placeholder: 'Rechnung #123' %>
+
+  <%= f.label :transaction_date, 'Transaktionsdatum' %>
+  <%= f.date_field :transaction_date, placeholder: l(Date.current) %>
+
+  <%= f.label :amount, 'Rechnungsbetrag' %>
+  <%= f.text_field :amount, placeholder: '100.25' %>
+
+  <%= f.label :currency_code, 'Waehrung' %>
+  <%= f.collection_select :currency_code, CURRENCY_CODES, :to_s, :to_s, prompt: 'Waehrung auswaehlen' %>
+
+  <%= f.label :payment_date, 'Zahlungsdatum' %>
+  <%= f.date_field :payment_date, placeholder: l(Date.current) %>
+
+  <%= f.label :description, 'Beschreibung' %>
+  <%= f.text_area :description, rows: 3 %>
+
+  <%= f.submit %>
+
+<% end %>

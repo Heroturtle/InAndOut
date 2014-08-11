@@ -1,7 +1,5 @@
-<h1>This is the show view for Expenses</h1>
+<% provide(:title, 'Ausgabe anzeigen') %>
 
-		<%= @expense.reference %>
-		<%= @expense.transaction_date %>
-		<%= @expense.lc_amount %>
-		<%= @expense.payment_date %>
-		<%= @expense.comments %>
+<h1>Ausgabe anzeigen</h1>
+
+<%= render 'form' %> 
