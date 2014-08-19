@@ -196,6 +196,9 @@ de:
     pm: nachmittags
     
   activerecord:
+    errors:
+      template:
+        header: Bitte die Felder korrigieren
     models:
       expense: Ausgabe
     attributes:

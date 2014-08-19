@@ -4,7 +4,6 @@ def show
   @expense = Expense.find(params[:id])
 end
 
-
 def new
     @expense = Expense.new
   end
@@ -12,7 +11,7 @@ def new
   def create
     @expense = Expense.new(expense_params)
     if @expense.save
-      redirect_to @expense, notice: 'Ausgabe wurde gebucht'
+      redirect_to @expense, notice: 'Ausgabe wurde gebucht.'
     else
       render :new, alert: "Etwas ging falsch, genau spezifieren was"
     end
