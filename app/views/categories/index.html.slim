@@ -1,0 +1,22 @@
+h1
+  | Ausgaben
+
+= link_to icon(:new, 'Neue Kategorie'), new_category_path, class: 'btn btn-primary'
+
+- if @categories.empty?
+
+		p Es gibt noch keine Ausgaben.
+
+- else
+
+		table class="table table-hover table-bordered"
+			thead
+  			tr
+  				th Name
+  				th Beschreibung
+
+			tbody
+				- @categories.each do |category|
+					tr
+						td = link_to "#{category.name}", [:edit, category]
+						td = category.description

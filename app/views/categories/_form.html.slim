@@ -1,0 +1,15 @@
+= form_for(@category) do |f|
+
+  - if @category.errors.any?
+    = error_messages_for @expense
+
+  .field  
+    = f.label :name
+    = f.text_field :name, placeholder: 'Auto'
+
+  .field
+  	= f.label :description
+    = f.text_field :description, placeholder: 'Sämtliche Kosten im Zusammenhang mit dem Auto: Benzin, Reparaturen, Autoversicherung, Motorfahrzeugsteuer, Autowäsche usw.'
+
+  .actions
+  = f.submit

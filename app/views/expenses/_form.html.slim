@@ -10,6 +10,10 @@
   .field
     = f.label :transaction_date, 'Transaktionsdatum'
     = f.date_field :transaction_date, placeholder: l(Date.current)
+
+  .field
+    = f.label :category_id, 'Kategorie'
+    = f.collection_select :category_id, Category.all, :id, :name, include_blank: 'Kategorie auswählen'
   
   .field
     = f.label :amount, 'Rechnungsbetrag'

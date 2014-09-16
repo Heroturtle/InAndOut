@@ -200,8 +200,12 @@ de:
       template:
         header: Bitte die Felder korrigieren
     models:
+      category: Kategorie
       expense: Ausgabe
     attributes:
+      category:
+        description: Beschreibung
+        name: Name
       expense:
         invoice_number: Rechnungsnummer
     

@@ -1,4 +1,27 @@
-<%= link_to glyph(:remove), '#', :class => "btn btn-danger" %>
 
 h1
-  | This is the index view for Expenses
+  | Ausgaben
+
+= link_to icon(:new, 'Neue Ausgabe'), new_expense_path, class: 'btn btn-primary'
+
+- if @expenses.empty?
+
+		p Es gibt noch keine Ausgaben.
+
+- else
+
+		table class="table table-hover table-bordered"
+			thead
+  			tr
+  				th No.
+  				th Datum
+  				th Beschreibung
+  				th Betrag
+
+			tbody
+				- @expenses.each do |expense|
+					tr
+						td = link_to "No. #{expense.id}", expense
+						td = l(expense.payment_date)
+						td = expense.description
+						td = money_amount(expense.amount, expense.currency_code)

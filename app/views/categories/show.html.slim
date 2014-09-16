@@ -1,0 +1,13 @@
+- provide(:title, 'Kategorie anzeigen')
+h1
+  | Kategorie anzeigen
+
+.btn-group
+		= link_to "Bearbeiten", [:edit, @category], class: 'btn btn-default'
+		- if @category.destroyable? 
+			= link_to "Löschen", @category, 
+				method: :delete, 
+				data: { confirm: "Willst Du die Kategorie wirklich löschen?" }, 
+				class: 'btn btn-default'
+
+= render 'form'

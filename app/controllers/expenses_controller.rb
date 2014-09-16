@@ -1,11 +1,15 @@
 class ExpensesController < ApplicationController
 
-def show
-  @expense = Expense.find(params[:id])
-end
+  def index
+    @expenses = Expense.all
+  end
 
-def new
-    @expense = Expense.new
+  def show
+    @expense = Expense.find(params[:id])
+  end
+
+  def new
+    @expense = Expense.new(expense_params)
   end
 
   def create
@@ -38,12 +42,13 @@ def new
 
   private
 
-  def load_expense
-    @expense = Expense.find(params[:id])
-  end
+    def load_expense
+      @expense = Expense.find(params[:id])
+    end
 
-  def expense_params
-    params.require(:expense).permit(:invoice_number, :amount, :currency_code, :transaction_date, :payment_date, :description)
-  end
+    def expense_params
+      expense_params = params[:expense] || ActionController::Parameters.new
+      expense_params.permit(Expense.permitted_params)
+    end
 
 end
