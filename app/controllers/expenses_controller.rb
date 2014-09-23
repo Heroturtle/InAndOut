@@ -17,7 +17,7 @@ class ExpensesController < ApplicationController
     if @expense.save
       redirect_to @expense, notice: 'Ausgabe wurde gebucht.'
     else
-      render :new, alert: "Etwas ging falsch, genau spezifieren was"
+      render :new
     end
   end
 
@@ -30,7 +30,7 @@ class ExpensesController < ApplicationController
     if @expense.update(expense_params)
       redirect_to @expense, notice: 'Ausgabe wurde aktualisiert'
     else
-      render :edit, alert: "Etwas ging falsch, genau spezifieren was"
+      render :edit
     end
   end
 

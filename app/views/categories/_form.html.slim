@@ -1,7 +1,7 @@
 = form_for(@category) do |f|
 
   - if @category.errors.any?
-    = error_messages_for @expense
+    = error_messages_for @category
 
   .field  
     = f.label :name

@@ -1,0 +1,18 @@
+= form_for(@payment_account) do |f|
+
+  - if @payment_account.errors.any?
+    = error_messages_for @payment_account
+
+  .field  
+    = f.label :name
+    = f.text_field :name, placeholder: 'Raiffeisen KK CHF'
+
+  .field
+    =f.label :
+
+  .field
+  	= f.label :description
+    = f.text_field :description, placeholder: 'Bankkonto in CHF für laufende Kosten'
+
+  .actions
+  = f.submit
