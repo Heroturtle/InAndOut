@@ -17,6 +17,7 @@ gem "slim-rails"
 gem "title"
 gem "uglifier"
 gem "unicorn"
+gem "assignable_values"
 
 group :development do
   gem "foreman"

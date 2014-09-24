@@ -201,11 +201,18 @@ de:
         header: Bitte die Felder korrigieren
     models:
       category: Kategorie
-      expense: Ausgabe
+      entry: Buchung
     attributes:
       category:
         description: Beschreibung
         name: Name
-      expense:
+      entry:
         invoice_number: Rechnungsnummer
+        transaction_date: Transaktionsdatum
+
+  assignable_values:
+    entry:
+      kind:
+        revenue: Einnahme
+        expense: Ausgabe
     

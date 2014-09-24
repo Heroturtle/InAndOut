@@ -1,5 +1,5 @@
 class PaymentAccount < ActiveRecord::Base
-	has_many :expenses
+	has_many :entries
 	validates :name, presence :true
 
 end

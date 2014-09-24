@@ -1,7 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :expense do
+  factory :entry do
+  	kind 'expense'
   	invoice_number		"4752829852"
     amount 						3612.20           
     currency_code			"CHF"

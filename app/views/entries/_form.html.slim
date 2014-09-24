@@ -1,0 +1,40 @@
+= form_for(@entry) do |f|
+
+  - if @entry.errors.any?
+    = error_messages_for @entry
+
+  .field
+    = f.label :kind, 'Typ'
+    = f.collection_select :kind, @entry.humanized_kinds, :value, :humanized
+    / = f.collection_select :kind, @entry.assignable_kinds, :to_s, :humanized
+
+  .field  
+    = f.label :invoice_number
+    = f.text_field :invoice_number, placeholder: 'Rechnung #123'
+
+  .field
+    = f.label :transaction_date
+    = f.date_field :transaction_date, placeholder: l(Date.current)
+
+  .field
+    = f.label :category_id, 'Kategorie'
+    = f.collection_select :category_id, Category.all, :id, :name, include_blank: 'Kategorie auswählen'
+  
+  .field
+    = f.label :amount, 'Rechnungsbetrag'
+    = f.text_field :amount, placeholder: '100.25'
+
+  .field 
+    = f.label :currency_code, 'Währung'
+    = f.collection_select :currency_code, CURRENCY_CODES, :to_s, :to_s, prompt: 'Waehrung auswaehlen'
+
+  .field
+    = f.label :payment_date, 'Zahlungsdatum'
+    = f.date_field :payment_date, placeholder: l(Date.current)
+
+  .field
+    = f.label :description, 'Beschreibung'
+    = f.text_area :description, rows: 3
+
+  .actions
+    = f.submit
