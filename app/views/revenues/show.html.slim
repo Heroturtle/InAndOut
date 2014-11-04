@@ -1,0 +1,7 @@
+- provide(:title, 'Einnahme anzeigen')
+h1
+  | Einnahme anzeigen
+
+div = link_to icon(:copy, 'Kopieren'), new_expense_path(revenue: @revenue.as_blueprint), class: 'btn btn-default'
+
+= render 'form'

@@ -8,7 +8,7 @@
     = f.text_field :invoice_number, placeholder: 'Rechnung #123'
 
   .field
-    = f.label :transaction_date, 'Transaktionsdatum'
+    = f.label :transaction_date
     = f.date_field :transaction_date, placeholder: l(Date.current)
 
   .field
@@ -20,12 +20,16 @@
     = f.text_field :amount, placeholder: '100.25'
 
   .field 
-    = f.label :currency_code, 'Waehrung'
-    = f.collection_select :currency_code, CURRENCY_CODES, :to_s, :to_s, prompt: 'Waehrung auswaehlen'
+    = f.label :currency_code, 'Währung'
+    = f.collection_select :currency_code, CURRENCY_CODES, :to_s, :to_s, prompt: 'Währung auswaehlen'
 
   .field
     = f.label :payment_date, 'Zahlungsdatum'
     = f.date_field :payment_date, placeholder: l(Date.current)
+
+  .field
+    = f.label :payment_account_id, 'Zahlung durch'
+    = f.collection_select :payment_account_id, PaymentAccount.all, :id, :name, include_blank: 'Zahlungskonto auswählen'
 
   .field
     = f.label :description, 'Beschreibung'

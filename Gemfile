@@ -18,6 +18,7 @@ gem "title"
 gem "uglifier"
 gem "unicorn"
 gem "assignable_values"
+gem "will_paginate"
 
 group :development do
   gem "foreman"

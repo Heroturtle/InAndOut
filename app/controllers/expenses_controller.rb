@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
 
   def index
-    @expenses = Expense.all
+    @expenses = Expense.order("id").page(params[:page]).per_page(3)
   end
 
   def show
@@ -27,10 +27,10 @@ class ExpensesController < ApplicationController
 
   def update
     load_expense
-    if @expense.update(expense_params)
-      redirect_to @expense, notice: 'Ausgabe wurde aktualisiert'
+    if @expense.update(revenue_params)
+      redirect_to @expense, notice: 'Ausgabe wurde aktualisiert.'
     else
-      render :edit
+      render :edit, notice: 'Ausgabe konnte nicht aktualisiert werden.'
     end
   end
 

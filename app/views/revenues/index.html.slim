@@ -1,0 +1,20 @@
+h1
+  | Einnahme
+
+= link_to icon(:new, 'Neue Einnahme'), new_revenue_path, class: 'btn btn-primary'
+
+table class="table table-hover table-bordered"
+	thead
+		tr
+			th No.
+			th Datum
+			th Beschreibung
+			th Betrag
+
+	tbody
+		- @revenues.each do |revenue|
+			tr
+				td = link_to "No. #{revenue.id}", revenue
+				td = l(revenue.payment_date)
+				td = revenue.description
+				td = money_amount(revenue.amount, revenue.currency_code)

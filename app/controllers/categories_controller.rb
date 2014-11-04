@@ -42,15 +42,6 @@ class CategoriesController < ApplicationController
 	# 	redirect_to @category, alert: "Mit dieser Kategorie sind Ausgaben verbunden. Sie kann daher nicht gelöscht werden."
 	end
 
-		# if Expense.exists?(category: @category)
-		# 	flash[:alert] = "Mit dieser Kategorie sind Ausgaben verbunden. Sie kann daher nicht gelöscht werden."
-		# 	redirect_to category_path(@category)
-		# else
-		# 	@category.destroy
-		# 	flash[:notice] = "Kategorie wurde gelöscht."
-		# 	redirect_to categories_path
-		# end
-
 	private
 
 		def load_category

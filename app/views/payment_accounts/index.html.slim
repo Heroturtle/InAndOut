@@ -1,0 +1,22 @@
+h1
+  | Zahlungskonten
+
+= link_to icon(:new, 'Neues Zahlungskonto'), new_payment_account_path, class: 'btn btn-primary'
+
+- if @payment_accounts.empty?
+
+		p Es gibt noch keine Zahlungskonten.
+
+- else
+
+		table class="table table-hover table-bordered"
+			thead
+  			tr
+  				th Name
+  				th Beschreibung
+
+			tbody
+				- @payment_accounts.each do |payment_account|
+					tr
+						td = link_to "#{payment_account.name}", [:edit, category]
+						td = payment_account.description

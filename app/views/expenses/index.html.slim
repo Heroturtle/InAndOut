@@ -1,27 +1,23 @@
-
 h1
   | Ausgaben
 
 = link_to icon(:new, 'Neue Ausgabe'), new_expense_path, class: 'btn btn-primary'
 
-- if @expenses.empty?
+table class="table table-hover table-bordered"
+	thead
+	tr
+		th No.
+		th Datum
+		th Beschreibung
+		th Betrag
 
-		p Es gibt noch keine Ausgaben.
+	tbody
+		- @expenses.each do |expense|
+			tr
+				td = link_to "No. #{expense.id}", expense
+				td = l(expense.payment_date)
+				td = expense.description
+				td = money_amount('-', expense.amount, expense.currency_code)
 
-- else
-
-		table class="table table-hover table-bordered"
-			thead
-  			tr
-  				th No.
-  				th Datum
-  				th Beschreibung
-  				th Betrag
-
-			tbody
-				- @expenses.each do |expense|
-					tr
-						td = link_to "No. #{expense.id}", expense
-						td = l(expense.payment_date)
-						td = expense.description
-						td = money_amount(expense.amount, expense.currency_code)
+ul.pagination
+= will_paginate @expenses, container: false, previous_label: "<", next_label: ">"

@@ -8,11 +8,12 @@
     = f.text_field :name, placeholder: 'Raiffeisen KK CHF'
 
   .field
-    =f.label :
+    =f.label :account_number
+    =f.text_field :account_number, placeholder: 'CHE487257429729202'
 
   .field
   	= f.label :description
     = f.text_field :description, placeholder: 'Bankkonto in CHF für laufende Kosten'
 
   .actions
-  = f.submit
+    = f.submit

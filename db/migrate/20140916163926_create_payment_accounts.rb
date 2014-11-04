@@ -4,7 +4,6 @@ class CreatePaymentAccounts < ActiveRecord::Migration
       t.string :name
       t.string :account_number
       t.string :description
-      t.string :text
 
       t.timestamps
     end

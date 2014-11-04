@@ -1,0 +1,13 @@
+- provide(:title, 'Zahlungskonto anzeigen')
+h1
+  | Zahlungskonto anzeigen
+
+.btn-group
+		= link_to "Bearbeiten", [:edit, @payment_account], class: 'btn btn-default'
+		- if @payment_account.destroyable? 
+			= link_to "Löschen", @payment_account, 
+				method: :delete, 
+				data: { confirm: "Willst Du das Zahlungskonto wirklich löschen?" }, 
+				class: 'btn btn-default'
+
+= render 'form'
