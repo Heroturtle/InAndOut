@@ -1,8 +1,10 @@
 class ExpensesController < ApplicationController
 
   def index
-    @expenses = Expense.order("id").page(params[:page])
-    @expenses_deleted = Expense.only_deleted.order("id").page(params[:page])
+    scope = Expense.order(:id)
+    scope = scope.only_deleted if params[:archived]
+    scope = scope.page(params[:page])
+    @expenses = scope
   end
 
   def show
