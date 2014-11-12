@@ -2,10 +2,11 @@ class ExpensesController < ApplicationController
 
   def index
     @expenses = Expense.order("id").page(params[:page]).per_page(3)
+    @expenses_deleted = Expense.only_deleted.order("id").page(params[:page]).per_page(3)
   end
 
   def show
-    @expense = Expense.find(params[:id])
+    @expense = Expense.with_deleted.find(params[:id])
   end
 
   def new

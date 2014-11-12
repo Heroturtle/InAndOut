@@ -6,6 +6,8 @@ class Expense < ActiveRecord::Base
     :transaction_date, :payment_date, presence: true
   # validates :category_id, presence: true
   validates :currency_code, inclusion: { in: CURRENCY_CODES }
+
+  acts_as_paranoid
   
 
   def self.permitted_params

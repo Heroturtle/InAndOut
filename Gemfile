@@ -19,6 +19,7 @@ gem "uglifier"
 gem "unicorn"
 gem "assignable_values"
 gem "will_paginate"
+gem "paranoia"
 
 group :development do
   gem "foreman"

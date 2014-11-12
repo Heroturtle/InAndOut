@@ -3,21 +3,53 @@ h1
 
 = link_to icon(:new, 'Neue Ausgabe'), new_expense_path, class: 'btn btn-primary'
 
-table class="table table-hover table-bordered"
-	thead
-	tr
-		th No.
-		th Datum
-		th Beschreibung
-		th Betrag
+/ <!-- Nav tabs -->
+ul class="nav nav-tabs" role="tablist"
+  li role="presentation" class="active"
+  	a href="#all" role="tab" data-toggle="tab"
+  	| Transaktionen
+  li role="presentation"
+  	a href="#deleted" role="tab" data-toggle="tab"
+  	| Gelöscht
+  
+/ <!-- Tab panes -->
+div class="tab-content"
+	div role="tabpanel" class="tab-pane active" id="all"
+		table class="table table-hover table-bordered"
+			thead
+				tr
+					th No.
+					th Datum
+					th Beschreibung
+					th Betrag
 
-	tbody
-		- @expenses.each do |expense|
-			tr
-				td = link_to "No. #{expense.id}", expense
-				td = l(expense.payment_date)
-				td = expense.description
-				td = money_amount('-', expense.amount, expense.currency_code)
+			tbody
+				- for expense in @expenses
+					tr
+						td = link_to "No. #{expense.id}", expense
+						td = l(expense.payment_date)
+						td = expense.description
+						td = money_amount('-', expense.amount, expense.currency_code)
 
-ul.pagination
-= will_paginate @expenses, container: false, previous_label: "<", next_label: ">"
+			ul.pagination
+				= will_paginate @expenses, container: false, previous_label: "<", next_label: ">"
+
+	div role="tabpanel" class="tab-pane" id="deleted"
+		table class="table table-hover table-bordered"
+			thead
+				tr
+					th No.
+					th Datum
+					th Beschreibung
+					th Betrag
+
+			tbody
+				- @expenses_deleted.each do |expense|
+					tr
+						td = link_to "No. #{expense.id}", expense
+						td = l(expense.payment_date)
+						td = expense.description
+						td = money_amount('-', expense.amount, expense.currency_code)
+
+			ul.pagination
+				= will_paginate @expenses, container: false, previous_label: "<", next_label: ">"
