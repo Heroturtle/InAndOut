@@ -3,18 +3,34 @@ h1
 
 = link_to icon(:new, 'Neue Einnahme'), new_revenue_path, class: 'btn btn-primary'
 
-table class="table table-hover table-bordered"
-	thead
-		tr
-			th No.
-			th Datum
-			th Beschreibung
-			th Betrag
+ul class="nav nav-tabs"
+  = list_item(active_on: revenues_path) do
+  	= link_to 'Ausgaben', revenues_path
+  = list_item(active_on: revenues_path(archived: true)) do
+  	= link_to 'Archivierte Einnahmen', revenues_path(archived: true)
 
-	tbody
-		- @revenues.each do |revenue|
+- if @revenues.empty?
+	br
+	b	
+		| Es gibt noch keine Transaktionen
+
+- else
+
+	table class="table table-hover table-bordered"
+		thead
 			tr
-				td = link_to "No. #{revenue.id}", revenue
-				td = l(revenue.payment_date)
-				td = revenue.description
-				td = money_amount(revenue.amount, revenue.currency_code)
+				th No.
+				th Datum
+				th Beschreibung
+				th Betrag
+
+		tbody
+			- for revenue in @revenues
+				tr
+					td = link_to "No. #{revenue.id}", revenue
+					td = l(revenue.payment_date)
+					td = revenue.description
+					td = money_amount('-', revenue.amount, revenue.currency_code)
+
+	ul.pagination
+		= will_paginate @expenses, container: false, previous_label: "<", next_label: ">"

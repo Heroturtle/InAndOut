@@ -11,21 +11,28 @@ ul class="nav nav-tabs"
   = list_item(active_on: expenses_path(archived: true)) do
   	= link_to 'Archivierte Ausgaben', expenses_path(archived: true)
 
-table class="table table-hover table-bordered"
-	thead
-		tr
-			th No.
-			th Datum
-			th Beschreibung
-			th Betrag
+- if @expenses.empty?
+	br
+	b	
+		| Es gibt noch keine Transaktionen
 
-	tbody
-		- for expense in @expenses
+- else
+
+	table class="table table-hover table-bordered"
+		thead
 			tr
-				td = link_to "No. #{expense.id}", expense
-				td = l(expense.payment_date)
-				td = expense.description
-				td = money_amount('-', expense.amount, expense.currency_code)
+				th No.
+				th Datum
+				th Beschreibung
+				th Betrag
+
+		tbody
+			- for expense in @expenses
+				tr
+					td = link_to "No. #{expense.id}", expense
+					td = l(expense.payment_date)
+					td = expense.description
+					td = money_amount('-', expense.amount, expense.currency_code)
 
 	ul.pagination
 		= will_paginate @expenses, container: false, previous_label: "<", next_label: ">"

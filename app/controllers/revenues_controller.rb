@@ -1,7 +1,10 @@
 class RevenuesController < ApplicationController
 
   def index
-    @revenues = Revenue.order("id").page(params[:page]).per_page(3)
+    scope = Revenue.order(:id)
+    scope = scope.only_deleted if params[:archived]
+    scope = scope.page(params[:page])
+    @revenues = scope
   end
 
   def show
