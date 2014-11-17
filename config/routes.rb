@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 	resources :categories
 	resources :payment_accounts
 
-	get '/einstellungen', to: 'settings#index', as: :einstellungen
+	get '/einstellungen', to: 'settings#index', as: :settings
 end

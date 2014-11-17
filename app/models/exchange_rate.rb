@@ -9,6 +9,7 @@ class ExchangeRate < ActiveRecord::Base
   end
 
 	def self.retrieved_upates!
+  end
 
 
 

@@ -199,18 +199,24 @@ de:
     errors:
       template:
         header: Bitte die Felder korrigieren
+
     models:
       revenue: Einnahme
       expense: Ausgabe
       category: Kategorie
       payment_account: Zahlungskonto
+
     attributes:
       category:
         description: Beschreibung
         name: Name
+
       expense:
+        category: Kategorie
+        category_id: Kategorie
         invoice_number: Rechnungsnummer
         transaction_date: Transaktionsdatum
+        
       payment_account:
         name: Name
         account_number: Kontonummer

@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20141116201638) do
     t.string   "name"
     t.string   "account_number"
     t.string   "description"
-    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

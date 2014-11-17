@@ -19,9 +19,8 @@ feature "Viewing expenses" do
 
 	scenario do
 		expense = FactoryGirl.create(:expense)
-		visit '/'
-		# click_link "No. #{expense.id}"
-		click_link 'No. 1'
+		visit expenses_path
+		click_link "No. #{expense.id}"
 		expect(page.current_url).to eql(expense_url(expense))
 	end
 end
