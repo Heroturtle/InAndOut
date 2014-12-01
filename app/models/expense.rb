@@ -17,4 +17,13 @@ class Expense < ActiveRecord::Base
   	blueprint = attributes.slice(*self.class.permitted_params)
   	blueprint.merge('transaction_date' => Date.current)
   end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << ["No.", "Datum", "Beschreibung", "Währung", "Betrag"]
+      all.each do |expense|
+        csv << [expense.id, expense.payment_date, expense.description, expense.currency_code, expense.amount] 
+      end
+    end
+  end
 end

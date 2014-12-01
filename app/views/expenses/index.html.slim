@@ -2,6 +2,7 @@ h1
   | Ausgaben
 
 = link_to icon(:new, 'Neue Ausgabe'), new_expense_path, class: 'btn btn-primary'
+= link_to "Export CSV", expenses_path(format: "csv"), class: 'btn btn-default'
 
 hr
 

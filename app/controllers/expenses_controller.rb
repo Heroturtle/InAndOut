@@ -5,6 +5,10 @@ class ExpensesController < ApplicationController
     scope = scope.only_deleted if params[:archived]
     scope = scope.page(params[:page])
     @expenses = scope
+    respond_to do |format|
+      format.html
+      format.csv { send_data @expenses.to_csv }
+    end
   end
 
   def show
