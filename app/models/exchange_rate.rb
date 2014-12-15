@@ -1,4 +1,6 @@
 class ExchangeRate < ActiveRecord::Base
+  include DoesTransaction
+
   validates :currency_code, :date, :conversion_rate, presence: true
   validates :currency_code, inclusion: { in: CURRENCY_CODES }
   validates :date, uniqueness: { scope: :date }
@@ -10,7 +12,6 @@ class ExchangeRate < ActiveRecord::Base
 
 	def self.retrieved_upates!
   end
-
 
 
 end

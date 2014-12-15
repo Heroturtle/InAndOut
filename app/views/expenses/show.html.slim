@@ -6,3 +6,7 @@ div = link_to icon(:copy, 'Kopieren'), new_expense_path(expense: @expense.as_blu
 div = link_to icon(:copy, 'Löschen'), expense_path(@expense), method: :delete, data: { confirm: 'Bist Du sicher, dass Du diese Ausgabe löschen möchtest?' }, class: 'btn btn-default'
 
 = render 'form'
+
+= image_tag @expense.receipt_url.to_s if @expense.receipt_url.present?
+
+

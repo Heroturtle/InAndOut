@@ -34,7 +34,7 @@ class ExpensesController < ApplicationController
 
   def update
     load_expense
-    if @expense.update(revenue_params)
+    if @expense.update(expense_params)
       redirect_to @expense, notice: 'Ausgabe wurde aktualisiert.'
     else
       render :edit, notice: 'Ausgabe konnte nicht aktualisiert werden.'

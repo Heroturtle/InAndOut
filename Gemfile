@@ -20,6 +20,8 @@ gem "unicorn"
 gem "assignable_values"
 gem "will_paginate"
 gem "paranoia"
+gem "carrierwave"
+gem 'modularity'
 
 group :development do
   gem "foreman"

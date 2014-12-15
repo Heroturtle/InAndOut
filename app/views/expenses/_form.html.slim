@@ -1,3 +1,5 @@
+= link_to
+
 = form_for(@expense) do |f|
 
   - if @expense.errors.any?
@@ -34,6 +36,16 @@
   .field
     = f.label :description, 'Beschreibung'
     = f.text_area :description, rows: 3
+
+  .field
+    = f.label :Receipt, "Beleg hochladen:"
+    = f.file_field :receipt
+
+  / - if @expense.receipt.present?
+  /   .checkbox
+  /     label
+  /       = f.check_box :remove_receipt
+  /       ' Beleg loeschen
 
   .actions
     = f.submit
