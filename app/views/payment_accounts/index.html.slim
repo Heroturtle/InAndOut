@@ -18,5 +18,5 @@ h1
 			tbody
 				- @payment_accounts.each do |payment_account|
 					tr
-						td = link_to "#{payment_account.name}", [:edit, category]
+						td = link_to "#{payment_account.name}", [:edit, payment_account]
 						td = payment_account.description
