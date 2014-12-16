@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 	resources :expenses
 	resources :categories
 	resources :payment_accounts
-  resources :assets
+  resources :assets do
+    resources :depreciations
+  end
 
 	get '/einstellungen', to: 'settings#index', as: :settings
 end

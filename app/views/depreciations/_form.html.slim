@@ -1,0 +1,23 @@
+= form_for(@asset, @depreciation) do |f|
+
+  - if @depreciation.errors.any?
+    = error_messages_for @depreciation
+
+  .field  
+    = f.label :start_date
+    = f.text_field :start_date, placeholder: l(Date.current)
+
+  .field
+    = f.label :end_date
+    = f.date_field :end_date, placeholder: l(Date.current + 30)
+  
+  .field
+    = f.label :amount, 'Abschreibungsbetrag'
+    = f.text_field :amount, placeholder: '3300.25'
+
+  .field
+    = f.label :category_id, 'Kategorie'
+    = f.collection_select :category_id, Category.all, :id, :name, include_blank: 'Abschreibungskategorie auswählen'
+
+  .actions
+    = f.submit

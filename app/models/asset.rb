@@ -1,7 +1,8 @@
 class Asset < ActiveRecord::Base
   belongs_to :category
   belongs_to :payment_account
-  
+  has_many   :depreciations
+
   DEPRECIATION_YEARS = ['1', '2', '3', '4', '5']
 
   def self.permitted_params
