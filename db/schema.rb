@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209175124) do
+ActiveRecord::Schema.define(version: 20141216151424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assets", force: true do |t|
+    t.string   "item"
+    t.date     "purchase_date"
+    t.decimal  "amount",             precision: 12, scale: 2
+    t.string   "currency_code"
+    t.date     "payment_date"
+    t.integer  "payment_account_id"
+    t.text     "description"
+    t.integer  "depreciation"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: true do |t|
     t.string   "name"

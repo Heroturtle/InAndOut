@@ -1,0 +1,39 @@
+- provide(:title, 'Ausgaben')
+
+h1
+  | Sachanlagen
+
+= link_to icon(:new, 'Neue Sachanlage'), new_asset_path, class: 'btn btn-primary'
+
+hr
+
+ul class="nav nav-tabs"
+  = list_item(active_on: assets_path) do
+    = link_to 'Sachanlagen', assets_path
+  = list_item(active_on: assets_path(archived: true)) do
+    = link_to 'Archivierte Sachanlagen', assets_path(archived: true)
+
+- if @assets.empty?
+  br
+  b 
+    | Es gibt noch keine Sachanlagen
+
+- else
+
+  table class="table table-hover table-bordered"
+    thead
+      tr
+        th Artikel
+        th Datum
+        th Beschreibung
+        th Betrag
+        th Abschreibungsjahre
+
+    tbody
+      - for asset in @assets
+        tr
+          td = link_to "#{asset.item}", asset
+          td = l(asset.payment_date)
+          td = asset.description
+          td = money_amount('-', asset.amount, asset.currency_code)
+          td = asset.depreciation
